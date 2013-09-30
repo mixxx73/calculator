@@ -1,0 +1,3 @@
+test_calc_homepage:
+    pattern:  /calc
+    defaults: { _controller: TestCalcBundle:Default:index }

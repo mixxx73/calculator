@@ -1,0 +1,4 @@
+test_calc:
+    resource: "@TestCalcBundle/Resources/config/routing.yml"
+    prefix:   /
+

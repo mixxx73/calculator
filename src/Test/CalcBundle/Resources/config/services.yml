@@ -1,0 +1,15 @@
+parameters:
+#    test_calc.example.class: Test\CalcBundle\Example
+    operator:       Test\CalcBundle\DependencyInjection\Operator
+    calculator:     Test\CalcBundle\DependencyInjection\Calculator
+
+services:
+#    test_calc.example:
+#        class: %test_calc.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    operator:
+        class:      %operator%
+        arguments:  []
+    calculator:
+        class:      %calculator%
+        arguments:  ["@operator"]
