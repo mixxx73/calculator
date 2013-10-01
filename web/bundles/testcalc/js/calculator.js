@@ -30,6 +30,7 @@
 		this.normalizeArgument = function(a) {
 			return parseFloat(a).toString();
 		}
+
 		this.display = function() {
 			var r = '';
 			r += _self.argument1;
@@ -48,16 +49,23 @@
 				}
 			}
 			$('#display').html(r);
+			return r;
 		}
 
-
+		this.checkIfResetNeeded = function() {
+			if (_self.result !== false) {
+				_self.resetState();
+			}
+		}
 
 		this.onDigitClick = function(event){
-			if (_self.operator == false) {
+			_self.checkIfResetNeeded();
+
+			if (_self.operator === false) {
 				_self.argument1 += $(this).val();
 				_self.argument1 = _self.normalizeArgument(_self.argument1);
 			} else {
-				if (_self.argument2 == false) _self.argument2 = '0';
+				if (_self.argument2 === false) _self.argument2 = '0';
 				_self.argument2 += $(this).val();
 				_self.argument2 = _self.normalizeArgument(_self.argument2);
 			}
@@ -65,7 +73,9 @@
 		}
 
 		this.onCommaClick = function(event){
-			if (_self.operator == false) {
+			_self.checkIfResetNeeded();
+
+			if (_self.operator === false) {
 				if ( argument1Comma == false ) {
 					_self.argument1 += '.';
 					argument1Comma = true;
@@ -85,6 +95,8 @@
 		}
 
 		this.onOperationClick = function(event){
+			_self.checkIfResetNeeded();
+
 			if (_self.operator == false) {
 				_self.operator = $(this).val();
 					_self.display();
@@ -116,7 +128,8 @@
 				function(data){
 					if (data.status && data.status == 'Success' && data.result) {
 						_self.result = data.result;
-						_self.display();
+						var r = _self.display();
+						$('#history ul').append('<li>'+r+'</li>');
 					}
 				}
 			);
