@@ -11,9 +11,13 @@ use Symfony\Component\HttpFoundation\JsonResponse as JsonResponse;
 
 class DefaultController extends Controller
 {
+    /**
+     * Default action showing calculator and operations history
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
-
         $url = $this->generateUrl( 'test_calc_result');
 
         $history = $this->getDoctrine()
@@ -22,7 +26,11 @@ class DefaultController extends Controller
         return $this->render('TestCalcBundle:Default:index.html.twig', array('operatorUrl' => $url, 'history' => $history));
     }
 
-
+    /**
+     * Ajax actions returning result and status
+     *
+     * @return JsonResponse
+     */
     public function resultAction()
     {
         $request = $this->getRequest();
