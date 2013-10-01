@@ -18,8 +18,8 @@ Test\CalcBundle\Entity\Operations:
             nullable: false
         operator:
             type: string
-            length: 10
-            fixed: false
+            length: 1
+            fixed: true
             nullable: false
         result:
             type: float

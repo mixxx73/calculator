@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 01, 2013 at 01:50 PM
+-- Generation Time: Oct 01, 2013 at 02:01 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `operations` (
   `operation_id` int(11) NOT NULL AUTO_INCREMENT,
   `argument1` double NOT NULL,
   `argument2` double NOT NULL,
-  `operator` varchar(10) NOT NULL,
+  `operator` char(1) NOT NULL,
   `result` double NOT NULL,
   PRIMARY KEY (`operation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;

@@ -54,6 +54,9 @@
 <div id="history">
 	<h3>History</h3>
 	<ul>
+{% for operation in history %}
+		<li>{{ operation.argument1 }} {{ operation.operator }} {{ operation.argument1 }} = {{ operation.result }}</li>
+{% endfor %}
 	</ul>
 </div>
 </body>

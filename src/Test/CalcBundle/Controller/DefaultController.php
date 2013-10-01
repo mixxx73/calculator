@@ -14,9 +14,12 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
-//        $calc = $this->get('calculator');
         $url = $this->generateUrl( 'test_calc_result');
-        return $this->render('TestCalcBundle:Default:index.html.twig', array('operatorUrl' => $url));
+
+        $history = $this->getDoctrine()
+            ->getRepository('TestCalcBundle:Operations')
+            ->findAll();
+        return $this->render('TestCalcBundle:Default:index.html.twig', array('operatorUrl' => $url, 'history' => $history));
     }
 
 
@@ -44,7 +47,21 @@ class DefaultController extends Controller
             $operation = new Operations;
             $operation->setArgument1($argument1);
             $operation->setArgument2($argument2);
-            $operation->setOperator($operator);
+            switch($operator) {
+                case "add": 
+                    $operationSign = '+'; 
+                break;
+                case "substract": 
+                    $operationSign = '-'; 
+                break;
+                case "multiply": 
+                    $operationSign = '*'; 
+                    break;
+                case "divide": 
+                    $operationSign = '/'; 
+                break;
+            }
+            $operation->setOperator($operationSign);
             $operation->setResult($result);
             $em = $this->getDoctrine()->getEntityManager(); 
             $em->persist($operation); 
