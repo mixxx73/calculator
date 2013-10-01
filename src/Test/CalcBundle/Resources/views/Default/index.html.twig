@@ -44,7 +44,7 @@
 		<div id="operations">
 			<button class="operation" value="add">+</button>
 			<button class="operation" value="substract">-</button>
-			<button class="operation" value="mutliply">*</button>
+			<button class="operation" value="multiply">*</button>
 			<button class="operation" value="divide">/</button>
 			<button id="execute" value="execute">=</button>
 			<button id="reset" value="execute">R</button>
@@ -55,7 +55,7 @@
 	<h3>History</h3>
 	<ul>
 {% for operation in history %}
-		<li>{{ operation.argument1 }} {{ operation.operator }} {{ operation.argument1 }} = {{ operation.result }}</li>
+		<li>{{ operation.argument1 }} {{ operation.operator }} {{ operation.argument2 }} = {{ operation.result }}</li>
 {% endfor %}
 	</ul>
 </div>
