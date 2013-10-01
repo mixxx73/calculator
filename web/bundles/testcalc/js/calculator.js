@@ -94,11 +94,11 @@
 		}
 
 		this.onExecuteClick = function(event){
-			if (_self.operator == false){
+			if (_self.operator === false){
 				alert('Operator is missing');
 				return false;
 			}
-			if (_self.argument2 == false) {
+			if (_self.argument2 === false) {
 				alert('Argument2 is missing');
 				return false;
 			}
