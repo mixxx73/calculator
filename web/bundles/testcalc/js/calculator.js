@@ -6,15 +6,26 @@
 			$('#comma').bind('click',_self.onCommaClick);
 			$('.operation').bind('click',_self.onOperationClick);
 			$('#execute').bind('click',_self.onExecuteClick);
+			$('#reset').bind('click',_self.resetState);
+
+			_self.resetState();
 		}
 
-		this.argument1 = '0';
-		this.argument2 = false;
-		this.operator = false;
-		this.result = false;
-		
 		var argument1Comma = false;
 		var argument2Comma = false;
+
+		this.resetState = function() {
+ 			_self.argument1 = '0';
+			_self.argument2 = false;
+			_self.operator = false;
+			_self.result = false;
+
+			argument1Comma = false;
+			argument2Comma = false;
+
+			_self.display();
+		}
+		
 
 		this.normalizeArgument = function(a) {
 			return parseFloat(a).toString();
