@@ -1,0 +1,27 @@
+Test\CalcBundle\Entity\Operations:
+    type: entity
+    table: operations
+    fields:
+        operationId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: operation_id
+            generator:
+                strategy: IDENTITY
+        argument1:
+            type: float
+            nullable: false
+        argument2:
+            type: float
+            nullable: false
+        operator:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+        result:
+            type: float
+            nullable: false
+    lifecycleCallbacks: {  }

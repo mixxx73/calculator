@@ -5,6 +5,7 @@ namespace Test\CalcBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Test\CalcBundle\DependencyInjection\Calculator as Calculator;
 use Test\CalcBundle\DependencyInjection\Operator as Operator;
+use Test\CalcBundle\Entity\Operations as Operations;
 
 use Symfony\Component\HttpFoundation\JsonResponse as JsonResponse;
 
@@ -39,6 +40,16 @@ class DefaultController extends Controller
                           'status' => 'Success',
                           'result' => $result
                         );
+
+            $operation = new Operations;
+            $operation->setArgument1($argument1);
+            $operation->setArgument2($argument2);
+            $operation->setOperator($operator);
+            $operation->setResult($result);
+            $em = $this->getDoctrine()->getEntityManager(); 
+            $em->persist($operation); 
+            $em->flush(); 
+
         }
         $response = new JsonResponse($response);
         $response->headers->set('Content-Type', 'application/json');
