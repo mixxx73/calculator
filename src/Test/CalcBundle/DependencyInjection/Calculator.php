@@ -16,14 +16,7 @@ class Calculator
 
     public function __construct(Operator $operator)
     {
-        //die('zzz1');
         $this->operator = $operator;
-    }
-
-    public function test()
-    {
-        //die('zzz');
-        $this->operator->do_test();
     }
 
     public function doOperation($argument1, $argument2, $operation)
@@ -34,6 +27,7 @@ class Calculator
         try {
             return $this->operator->$operation();
         } catch (Exception $e) {
+            return false;
 
         }
     }

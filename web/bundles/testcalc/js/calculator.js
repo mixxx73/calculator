@@ -1,4 +1,4 @@
-	var Calculator = function(){		
+	var Calculator = function(operatorUrl){		
 		var _self = this;
 
 		this.init = function(){
@@ -94,10 +94,32 @@
 		}
 
 		this.onExecuteClick = function(event){
-			if (_self.operator == false) alert('Operator is missing');
-			if (_self.argument2 == false) alert('Argument2 is missing');
-			if (_self.operator == 'divide' && parseFloat(_self.argument2) == 0) alert('Can not divide by 0');
-			alert('go!');
+			if (_self.operator == false){
+				alert('Operator is missing');
+				return false;
+			}
+			if (_self.argument2 == false) {
+				alert('Argument2 is missing');
+				return false;
+			}
+			if (_self.operator == 'divide' && parseFloat(_self.argument2) == 0) {
+				alert('Can not divide by 0');
+				return false;
+			}
+			$.getJSON(
+				operatorUrl,
+				{ 
+					'argument1' : _self.argument1, 
+					'argument2' : _self.argument2, 
+					'operator' : _self.operator
+				}, 
+				function(data){
+					if (data.status && data.status == 'Success' && data.result) {
+						_self.result = data.result;
+						_self.display();
+					}
+				}
+			);
 		}
 
 		this.init();
