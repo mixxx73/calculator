@@ -3,6 +3,16 @@
  <head>
   <title> calculator </title>
   <meta name="author" content="Michal Macierzynski" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/testcalc/js/calculator.js') }}"></script>
+<script type="text/javascript">
+<!--
+	$(document).ready(function(){
+		var calc = new Calculator();
+	});
+
+//-->
+</script>
  </head>
 
  <body>
@@ -36,8 +46,8 @@
 	<div id="pad">
 		<div id="numbers">
 			<button class="digit" value="7">7</button>
-			<button class="digit" value="7">8</button>
-			<button class="digit" value="7">9</button>
+			<button class="digit" value="8">8</button>
+			<button class="digit" value="9">9</button>
 			<br/>
 			<button class="digit" value="4">4</button>
 			<button class="digit" value="5">5</button>
@@ -48,7 +58,7 @@
 			<button class="digit" value="3">3</button>
 			<br/>
 			<button class="digit" value="0">0</button>
-			<button class="digit" value=",">,</button>
+			<button id="comma" value=",">,</button>
 			<br/>
 		</div>
 		<div id="operations">
@@ -56,7 +66,7 @@
 			<button class="operation" value="substract">-</button>
 			<button class="operation" value="mutliply">*</button>
 			<button class="operation" value="divide">/</button>
-			<button class="operation" value="execute">=</button>
+			<button id="execute" value="execute">=</button>
 		</div>
 	</div>
 </div>
