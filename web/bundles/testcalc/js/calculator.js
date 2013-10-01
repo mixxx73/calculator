@@ -1,6 +1,12 @@
+	/**
+	 * Calculator class performs all operations of calculator
+	 */
 	var Calculator = function(operatorUrl){		
 		var _self = this;
 
+		/**
+		 * Init function, called once
+		 */
 		this.init = function(){
 			$('.digit').bind('click',_self.onDigitClick);
 			$('#comma').bind('click',_self.onCommaClick);
@@ -11,9 +17,16 @@
 			_self.resetState();
 		}
 
+		/**
+		 * private definitions
+		 */
 		var argument1Comma = false;
 		var argument2Comma = false;
 
+		/**
+		 * Reset calculator to initial state
+		 * Includes public definitions
+		 */
 		this.resetState = function() {
  			_self.argument1 = '0';
 			_self.argument2 = false;
@@ -26,11 +39,16 @@
 			_self.display();
 		}
 		
-
+		/**
+		 * Takes care about leading zero
+		 */
 		this.normalizeArgument = function(a) {
 			return parseFloat(a).toString();
 		}
 
+		/**
+		 * Prints current operation state to display and return it
+		 */
 		this.display = function() {
 			var r = '';
 			r += _self.argument1;
@@ -52,12 +70,19 @@
 			return r;
 		}
 
+		/**
+		 * Checks if there is result 
+		 * if yes then resets calculator state for new operations
+		 */
 		this.checkIfResetNeeded = function() {
 			if (_self.result !== false) {
 				_self.resetState();
 			}
 		}
 
+		/**
+		 * Handles digits click
+		 */
 		this.onDigitClick = function(event){
 			_self.checkIfResetNeeded();
 
@@ -72,6 +97,9 @@
 			_self.display();
 		}
 
+		/**
+		 * Handles comma click, use dot for js compability 
+		 */
 		this.onCommaClick = function(event){
 			_self.checkIfResetNeeded();
 
@@ -94,17 +122,23 @@
 			}
 		}
 
+		/**
+		 * Handles operations click 
+		 */
 		this.onOperationClick = function(event){
 			_self.checkIfResetNeeded();
 
 			if (_self.operator == false) {
 				_self.operator = $(this).val();
-					_self.display();
+				_self.display();
 			} else {
 				alert('There is operator already');
 			}
 		}
 
+		/**
+		 * Handles getting result
+		 */
 		this.onExecuteClick = function(event){
 			if (_self.operator === false){
 				alert('Operator is missing');
