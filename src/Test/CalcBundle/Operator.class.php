@@ -6,6 +6,5 @@ class Operator
 {
     public function do()
     {
-        die('xxx');
     }
 }

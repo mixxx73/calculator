@@ -41,9 +41,9 @@ class Calculator
         $this->operator->setArgument1($argument1);
         $this->operator->setArgument2($argument2);
 
-        try {
+	if (method_exists($this->operator,'$operation')) {
             return $this->operator->$operation();
-        } catch (Exception $e) {
+        } else {
             return false;
         }
     }
