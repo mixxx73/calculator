@@ -39,8 +39,9 @@ class DefaultController extends Controller
         $argument2 = $request->query->get('argument2');
         $operator = $request->query->get('operator');
 
+        /** @var \Test\CalcBundle\DependencyInjection\Calculator $result */
         $calc = $this->get('calculator');
-        
+
         $result = $calc->doOperation($argument1, $argument2, $operator);
         if ($result === false ) {
             $response = array(

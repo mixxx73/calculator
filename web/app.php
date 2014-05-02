@@ -19,6 +19,8 @@ require_once __DIR__.'/../app/AppKernel.php';
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
+// temporary error level hardcoded
+error_reporting(E_ALL &  !E_DEPRECATED & !E_NOTICE & !E_WARNING );
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
