@@ -1,0 +1,22 @@
+#calculator {
+    width: 250px;
+    height: 150px;
+    padding: 5px;
+    background-color: #b1dafb;
+    float: left;
+}
+#history {
+    margin-left: 300px;
+}
+#display {
+    background-color: white;
+    border: solid 1px black;
+    margin: 5px;
+
+    text-align: right;
+    padding: 2px;
+}
+#numbers {
+    width: 120px;
+    float: left;
+}
