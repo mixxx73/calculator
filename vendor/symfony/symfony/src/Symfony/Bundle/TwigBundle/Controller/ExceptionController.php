@@ -12,7 +12,7 @@
 namespace Symfony\Bundle\TwigBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
-use Symfony\Component\Debug\Exception\FlattenException;
+use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -64,7 +64,7 @@ class ExceptionController
     }
 
     /**
-     * @param integer $startObLevel
+     * @param int     $startObLevel
      *
      * @return string
      */
@@ -86,8 +86,8 @@ class ExceptionController
     /**
      * @param Request $request
      * @param string  $format
-     * @param integer $code       An HTTP response status code
-     * @param Boolean $debug
+     * @param int     $code       An HTTP response status code
+     * @param bool    $debug
      *
      * @return TemplateReference
      */
